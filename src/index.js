@@ -8,11 +8,17 @@ const Greet = {
 const Num = {
   props: ['number'],
   template: `
-    <li :class="getClass(number)">
+    <button 
+      @click="handleClick"
+      :class="getClass(number)"
+    >
       {{ number }}
-    </li>
+    </button>
   `,
   methods: {
+    handleClick() {
+      this.$emit('selected', this.number)
+    },
     getClass(number) {
       return this.isEven(number) ? 'red' : 'blue'
     },
@@ -28,28 +34,20 @@ const app = Vue.createApp({
     Num
   },
   template: `
-    <p>{{ count }}</p>
-    <greet :message="numbers" />
-    <button @click="add">Increment</button>
-    <ul>
-      <num 
-        v-for="number in numbers"
-        :number="number"
-      />
-    </ul>
-    <input v-model="checked" type="radio" value="a" />
-    <input v-model="checked" type="radio" value="b" />
-    <input v-model="checked" type="radio" value="c" />
-
-    {{ checked }}
-    <div v-if="error">{{ error }}</div>
+    <num 
+      v-for="number in numbers"
+      :number="number"
+      @selected="selected"
+    />
+    {{ selectedNumbers }}
   `,
   data() {
     return {
       count: 0,
       numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       username: 'user',
-      checked: 'a'
+      checked: 'a',
+      selectedNumbers: []
     }
   },
   computed: {
@@ -63,6 +61,9 @@ const app = Vue.createApp({
     }
   },
   methods: {
+    selected(number) {
+      this.selectedNumbers.push(number)
+    },
     input($event) {
       this.username = $event.target.value
     },
