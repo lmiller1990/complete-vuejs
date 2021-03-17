@@ -9,22 +9,9 @@
 <body>
 
   <div id="app">
-    {{ person }}
   </div>
 
-  <script type="module">
-    import * as Vue from 'vue/dist/vue.esm-bundler.js'
-    const app = Vue.createApp({
-      data() {
-        return {
-          person: {
-            name: 'Lachlan',
-            age: 30
-          }
-        }
-      }
-    })
-    app.mount('#app')
+  <script type="module" src="/index.js">
   </script>
 
 </body>
