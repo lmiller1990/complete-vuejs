@@ -1,29 +1,41 @@
 import * as Vue from 'vue/dist/vue.esm-bundler.js'
 
-// username
-// 5, 10
-
 const Greet = {
   props: ['message'],
   template: `<p>{{ message }}</p>`
 }
 
+const Num = {
+  props: ['number'],
+  template: `
+    <li :class="getClass(number)">
+      {{ number }}
+    </li>
+  `,
+  methods: {
+    getClass(number) {
+      return this.isEven(number) ? 'red' : 'blue'
+    },
+    isEven(number) {
+      return number % 2 === 0
+    },
+  }
+}
+
 const app = Vue.createApp({
   components: {
     Greet,
+    Num
   },
   template: `
     <p>{{ count }}</p>
     <greet :message="numbers" />
     <button @click="add">Increment</button>
     <ul>
-      <li 
+      <num 
         v-for="number in numbers"
-        :class="getClass(number)"
-        :title="number"
-      >
-        {{ number }}
-      </li>
+        :number="number"
+      />
     </ul>
     <input v-model="checked" type="radio" value="a" />
     <input v-model="checked" type="radio" value="b" />
@@ -54,14 +66,8 @@ const app = Vue.createApp({
     input($event) {
       this.username = $event.target.value
     },
-    getClass(number) {
-      return this.isEven(number) ? 'red' : 'blue'
-    },
     add() {
       this.numbers.push(this.numbers.length + 1)
-    },
-    isEven(number) {
-      return number % 2 === 0
     },
     increment() {
       this.count += 1
