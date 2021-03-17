@@ -16,7 +16,11 @@ const app = Vue.createApp({
         {{ number }}
       </li>
     </ul>
-    <input @input="input" :value="username" />
+    <input v-model="checked" type="radio" value="a" />
+    <input v-model="checked" type="radio" value="b" />
+    <input v-model="checked" type="radio" value="c" />
+
+    {{ checked }}
     <div v-if="error">{{ error }}</div>
   `,
   data() {
@@ -24,6 +28,7 @@ const app = Vue.createApp({
       count: 0,
       numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       username: 'user',
+      checked: 'a'
     }
   },
   computed: {
