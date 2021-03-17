@@ -3,9 +3,18 @@ import * as Vue from 'vue/dist/vue.esm-bundler.js'
 // username
 // 5, 10
 
+const Greet = {
+  props: ['message'],
+  template: `<p>{{ message }}</p>`
+}
+
 const app = Vue.createApp({
+  components: {
+    Greet,
+  },
   template: `
     <p>{{ count }}</p>
+    <greet :message="numbers" />
     <button @click="add">Increment</button>
     <ul>
       <li 
