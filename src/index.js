@@ -2,14 +2,17 @@ import * as Vue from 'vue/dist/vue.esm-bundler.js'
 
 const app = Vue.createApp({
   template: `
-    <p>{{ person }}</p>
+    <p>{{ count }}</p>
+    <button v-on:click="increment">Increment</button>
   `,
   data() {
     return {
-      person: {
-        name: 'Lachlan',
-        age: 30
-      }
+      count: 0
+    }
+  },
+  methods: {
+    increment() {
+      this.count += 1
     }
   }
 })
