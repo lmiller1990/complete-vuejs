@@ -3,10 +3,14 @@ import * as Vue from 'vue/dist/vue.esm-bundler.js'
 const app = Vue.createApp({
   template: `
     <p>{{ count }}</p>
-    <button v-on:click="add">Increment</button>
+    <button @click="add">Increment</button>
 
     <ul>
-      <li v-for="number in evenNumbers">
+      <li 
+        v-for="number in numbers"
+        :class="getClass(number)"
+        :title="number"
+      >
         {{ number }}
       </li>
     </ul>
@@ -23,6 +27,9 @@ const app = Vue.createApp({
     }
   },
   methods: {
+    getClass(number) {
+      return this.isEven(number) ? 'red' : 'blue'
+    },
     add() {
       this.numbers.push(this.numbers.length + 1)
     },
