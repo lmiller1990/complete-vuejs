@@ -2,12 +2,17 @@
   <my-input 
     name="Username" 
     :rules="{ required: true, min: 5 }"
+    :value="username"
+    @update="update"
   />
 
   <my-input 
     name="Password" 
     :rules="{ required: true, min: 10 }"
+    :value="password"
+    @update="update"
   />
+
   <my-button 
     color="white"
     background="darkslateblue"
@@ -27,7 +32,15 @@ export default {
 
   data() {
     return {
-      valid: false
+      valid: false,
+      username: '',
+      password: ''
+    }
+  },
+
+  methods: {
+    update(payload) {
+      this[payload.name] = payload.value
     }
   }
 }

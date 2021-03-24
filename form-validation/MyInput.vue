@@ -4,14 +4,22 @@
       <label :for="name">{{ name }}</label>
       <div class="error">{{ error }}</div>
     </div>
-    <input :id="name" type="text" v-model="value" />
-    {{ value }}
+    <input 
+      :id="name" 
+      type="text" 
+      :value="value" 
+      @input="input"
+    />
   </div>
 </template>
 
 <script>
 export default {
   props: {
+    value: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true
@@ -24,12 +32,6 @@ export default {
     }
   },
 
-  data() {
-    return {
-      value: ''
-    }
-  },
-
   computed: {
     error() {
       if (this.rules.required && this.value.length === 0) {
@@ -39,6 +41,15 @@ export default {
       if (this.rules.min && this.value.length < this.rules.min) {
         return `The minimum length ${this.rules.min}.`
       }
+    }
+  },
+
+  methods: {
+    input($event) {
+      this.$emit('update', {
+        name: this.name.toLowerCase(),
+        value: $event.target.value
+      })
     }
   }
 }
