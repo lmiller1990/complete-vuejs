@@ -1,7 +1,11 @@
 <template>
   <div class="input">
-    <label :for="name">{{ name }}</label>
-    <input :id="name" type="text" />
+    <div class="label">
+      <label :for="name">{{ name }}</label>
+      <div class="error">{{ error }}</div>
+    </div>
+    <input :id="name" type="text" v-model="value" />
+    {{ value }}
   </div>
 </template>
 
@@ -11,6 +15,30 @@ export default {
     name: {
       type: String,
       required: true
+    },
+    rules: {
+      // required: boolean
+      // min: number
+      type: Object,
+      default: {}
+    }
+  },
+
+  data() {
+    return {
+      value: ''
+    }
+  },
+
+  computed: {
+    error() {
+      if (this.rules.required && this.value.length === 0) {
+        return 'This value is required.'
+      }
+
+      if (this.rules.min && this.value.length < this.rules.min) {
+        return `The minimum length ${this.rules.min}.`
+      }
     }
   }
 }
@@ -20,6 +48,15 @@ export default {
 .input {
   display: flex;
   flex-direction: column;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error {
+  color: red;
 }
 
 input {
