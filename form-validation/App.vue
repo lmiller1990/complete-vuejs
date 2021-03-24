@@ -2,14 +2,14 @@
   <my-input 
     name="Username" 
     :rules="{ required: true, min: 5 }"
-    :value="username"
+    :value="username.value"
     @update="update"
   />
 
   <my-input 
     name="Password" 
     :rules="{ required: true, min: 10 }"
-    :value="password"
+    :value="password.value"
     @update="update"
   />
 
@@ -32,15 +32,29 @@ export default {
 
   data() {
     return {
-      valid: false,
-      username: '',
-      password: ''
+      username: {
+        value: '',
+        valid: false
+      },
+      password: {
+        value: '',
+        valid: false
+      }
+    }
+  },
+
+  computed: {
+    valid() {
+      return this.username.valid && this.password.valid
     }
   },
 
   methods: {
     update(payload) {
-      this[payload.name] = payload.value
+      this[payload.name] = {
+        value: payload.value,
+        valid: payload.valid
+      }
     }
   }
 }

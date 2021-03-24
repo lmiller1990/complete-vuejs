@@ -34,21 +34,26 @@ export default {
 
   computed: {
     error() {
-      if (this.rules.required && this.value.length === 0) {
-        return 'This value is required.'
-      }
-
-      if (this.rules.min && this.value.length < this.rules.min) {
-        return `The minimum length ${this.rules.min}.`
-      }
+      return this.validate(this.value)
     }
   },
 
   methods: {
+    validate(value) {
+      if (this.rules.required && value.length === 0) {
+        return 'This value is required.'
+      }
+
+      if (this.rules.min && value.length < this.rules.min) {
+        return `The minimum length ${this.rules.min}.`
+      }
+    },
+
     input($event) {
       this.$emit('update', {
         name: this.name.toLowerCase(),
-        value: $event.target.value
+        value: $event.target.value,
+        valid: !this.validate($event.target.value)
       })
     }
   }
