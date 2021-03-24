@@ -1,8 +1,10 @@
 <template>
-  <button v-bind:style="{ 
-    background,
-    color,
-  }">My Button</button>
+  <button 
+    :style="{  background, color }"
+    :disabled="disabled"
+  >
+    My Button
+  </button>
 </template>
 
 <script>
@@ -15,6 +17,10 @@ export default {
     color: {
       type: String,
       required: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -26,6 +32,10 @@ button {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
 }
 
 button:hover {
