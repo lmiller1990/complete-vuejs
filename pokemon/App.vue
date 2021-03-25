@@ -1,4 +1,5 @@
 <template>
+  <button @click="fetchData">Fetch</button>
   <div class="card">
     <div class="title">
       Title
@@ -15,8 +16,32 @@
 </template>
 
 <script>
+const api = 'https://pokeapi.co/api/v2/pokemon'
 
 export default {
+  data() {
+    return {
+      pokemon: null
+    }
+  },
+
+  methods: {
+    async fetchData() {
+      const response = await window.fetch(`${api}/1`)
+      const data = await response.json()
+      this.pokemon = {
+        id: data.id,
+        name: data.name,
+        sprite: data.sprites.other['official-artwork'].front_default,
+        types: data.types.map(type => {
+          return {
+            name: type.type.name
+          }
+        })
+      }
+      console.log(this.pokemon)
+    }
+  }
 }
 </script>
 
