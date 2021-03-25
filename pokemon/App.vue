@@ -1,5 +1,4 @@
 <template>
-  <button @click="fetchData">Fetch</button>
   <div class="card">
     <div class="title">
       Title
@@ -24,6 +23,10 @@ export default {
     return {
       pokemon: []
     }
+  },
+
+  created() {
+    this.fetchData()
   },
 
   methods: {
