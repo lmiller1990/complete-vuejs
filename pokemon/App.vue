@@ -1,6 +1,31 @@
 <template>
   <div class="cards">
-    <card v-for="p in pokemon" :key="p.id" :p="p">
+    <card 
+      v-for="p in pokemon" 
+      :key="p.id" 
+      @click="fetchEvolutions(p)"
+    >
+      <template v-slot:title>
+        {{ p.name }}
+      </template>
+
+      <template v-slot:content>
+        <img :src="p.sprite" />
+      </template>
+
+      <template v-slot:description>
+        <div v-for="type in p.types" :key="type.name">
+          {{ type.name }}
+        </div>
+      </template>
+    </card>
+  </div>
+
+  <div class="cards">
+    <card 
+      v-for="p in evolutions" 
+      :key="p.id" 
+    >
       <template v-slot:title>
         {{ p.name }}
       </template>
@@ -31,25 +56,32 @@ export default {
 
   data() {
     return {
-      pokemon: []
+      pokemon: [],
+      evolutions: []
     }
   },
 
-  created() {
-    this.fetchData()
+  async created() {
+    this.pokemon = await this.fetchData(ids)
   },
 
   methods: {
-    async fetchData() {
+    async fetchEvolutions(pokemon) {
+      this.evolutions = await this.fetchData(
+        [pokemon.id + 1, pokemon.id + 2]
+      )
+    },
+
+    async fetchData(idsToFetch) {
       const responses = await Promise.all(
-         ids.map(id => window.fetch(`${api}/${id}`))
+         idsToFetch.map(id => window.fetch(`${api}/${id}`))
       )
 
       const data = await Promise.all(
         responses.map(response => response.json())
       )
 
-      this.pokemon = data.map(datum => ({
+      return data.map(datum => ({
         id: datum.id,
         name: datum.name,
         sprite: datum.sprites.other['official-artwork'].front_default,
