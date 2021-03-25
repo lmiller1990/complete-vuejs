@@ -17,28 +17,36 @@
 
 <script>
 const api = 'https://pokeapi.co/api/v2/pokemon'
+const ids = [1, 4, 7]
 
 export default {
   data() {
     return {
-      pokemon: null
+      pokemon: []
     }
   },
 
   methods: {
     async fetchData() {
-      const response = await window.fetch(`${api}/1`)
-      const data = await response.json()
-      this.pokemon = {
-        id: data.id,
-        name: data.name,
-        sprite: data.sprites.other['official-artwork'].front_default,
-        types: data.types.map(type => {
+      const responses = await Promise.all(
+         ids.map(id => window.fetch(`${api}/${id}`))
+      )
+
+      const data = await Promise.all(
+        responses.map(response => response.json())
+      )
+
+      this.pokemon = data.map(datum => ({
+        id: datum.id,
+        name: datum.name,
+        sprite: datum.sprites.other['official-artwork'].front_default,
+        types: datum.types.map(type => {
           return {
             name: type.type.name
           }
         })
-      }
+      }))
+
       console.log(this.pokemon)
     }
   }
