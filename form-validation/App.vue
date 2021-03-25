@@ -1,23 +1,27 @@
 <template>
-  <my-input 
-    name="Username" 
-    :rules="{ required: true, min: 5 }"
-    :value="username.value"
-    @update="update"
-  />
+  <form @submit.prevent="submit">
+    <my-input 
+      name="Username" 
+      :rules="{ required: true, min: 5 }"
+      :value="username.value"
+      type="text"
+      @update="update"
+    />
 
-  <my-input 
-    name="Password" 
-    :rules="{ required: true, min: 10 }"
-    :value="password.value"
-    @update="update"
-  />
+    <my-input 
+      name="Password" 
+      :rules="{ required: true, min: 10 }"
+      :value="password.value"
+      type="password"
+      @update="update"
+    />
 
-  <my-button 
-    color="white"
-    background="darkslateblue"
-    :disabled="!valid"
-  />
+    <my-button 
+      color="white"
+      background="darkslateblue"
+      :disabled="!valid"
+    />
+  </form>
 </template>
 
 <script>
@@ -50,6 +54,10 @@ export default {
   },
 
   methods: {
+    submit() {
+      console.log('Submit')
+    },
+
     update(payload) {
       this[payload.name] = {
         value: payload.value,
@@ -63,5 +71,10 @@ export default {
 <style>
 body {
   font-family: Arial;
+}
+
+form {
+  max-width: 400px;
+  width: 50%;
 }
 </style>

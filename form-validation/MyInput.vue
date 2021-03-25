@@ -6,7 +6,7 @@
     </div>
     <input 
       :id="name" 
-      type="text" 
+      :type="type" 
       :value="value" 
       @input="input"
     />
@@ -16,6 +16,10 @@
 <script>
 export default {
   props: {
+    type: {
+      type: String,
+      default: 'text'
+    },
     value: {
       type: String,
       required: true
