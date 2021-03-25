@@ -49,8 +49,6 @@ export default {
           }
         })
       }))
-
-      console.log(this.pokemon)
     }
   }
 }
