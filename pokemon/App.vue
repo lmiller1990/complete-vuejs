@@ -1,59 +1,22 @@
 <template>
-  <div class="cards">
-    <card 
-      v-for="p in pokemon" 
-      :key="p.id" 
-      @click="fetchEvolutions(p)"
-      :class="{ opace: p.id !== selectedId }"
-      class="card"
-    >
-      <template v-slot:title>
-        {{ p.name }} #{{ p.id }}
-      </template>
+  <pokemon-cards 
+    :pokemon="pokemon" 
+    :selectedId="selectedId"
+    @pokemonSelected="fetchEvolutions"
+  />
 
-      <template v-slot:content>
-        <img :src="p.sprite" />
-      </template>
-
-      <template v-slot:description>
-        <div v-for="type in p.types" :key="type.name">
-          {{ type.name }}
-        </div>
-      </template>
-    </card>
-  </div>
-
-  <div class="cards">
-    <card 
-      v-for="p in evolutions" 
-      :key="p.id" 
-    >
-      <template v-slot:title>
-        {{ p.name }} #{{ p.id }}
-      </template>
-
-      <template v-slot:content>
-        <img :src="p.sprite" />
-      </template>
-
-      <template v-slot:description>
-        <div v-for="type in p.types" :key="type.name">
-          {{ type.name }}
-        </div>
-      </template>
-    </card>
-  </div>
+  <pokemon-cards :pokemon="evolutions" />
 </template>
 
 <script>
-import Card from './Card.vue'
+import PokemonCards from './PokemonCards.vue'
 
 const api = 'https://pokeapi.co/api/v2/pokemon'
 const ids = [1, 4, 7]
 
 export default {
   components: {
-    Card
+    PokemonCards
   },
 
   data() {
