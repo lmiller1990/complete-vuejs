@@ -4,9 +4,11 @@
       v-for="p in pokemon" 
       :key="p.id" 
       @click="fetchEvolutions(p)"
+      :class="{ opace: p.id !== selectedId }"
+      class="card"
     >
       <template v-slot:title>
-        {{ p.name }}
+        {{ p.name }} #{{ p.id }}
       </template>
 
       <template v-slot:content>
@@ -27,7 +29,7 @@
       :key="p.id" 
     >
       <template v-slot:title>
-        {{ p.name }}
+        {{ p.name }} #{{ p.id }}
       </template>
 
       <template v-slot:content>
@@ -57,7 +59,8 @@ export default {
   data() {
     return {
       pokemon: [],
-      evolutions: []
+      evolutions: [],
+      selectedId: null
     }
   },
 
@@ -70,6 +73,7 @@ export default {
       this.evolutions = await this.fetchData(
         [pokemon.id + 1, pokemon.id + 2]
       )
+      this.selectedId = pokemon.id
     },
 
     async fetchData(idsToFetch) {
@@ -103,5 +107,13 @@ img {
 
 .cards {
   display: flex;
+}
+
+.opace {
+  opacity: 0.5;
+}
+
+.card:hover {
+  opacity: 1;
 }
 </style>
