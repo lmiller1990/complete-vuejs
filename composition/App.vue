@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, watch } from 'vue'
 
 export default {
   setup() {
@@ -33,6 +33,12 @@ export default {
 
     const double = computed(() => {
       return total.value * 2
+    })
+
+    watch(double, (newVal) => {
+      console.log(`double: ${newVal}`)
+    }, {
+      immediate: true
     })
 
     return {
