@@ -10,7 +10,6 @@ export default {
     const count = ref(0)
 
     const increment = () => {
-      console.log(count.value)
       count.value++
     }
 
