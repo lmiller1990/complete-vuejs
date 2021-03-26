@@ -1,8 +1,11 @@
 <template>
   <button @click="increment">{{ count }}</button>
-  <button @click="increase('a')">{{ numbers.a }}</button>
-  <button @click="increase('b')">{{ numbers.b }}</button>
+  <button @click="a++">{{ a }}</button>
+  <button @click="b++">{{ b }}</button>
   <h1>{{ double }}</h1>
+  <div v-for="val in history" :key="val">
+    {{ val }}
+  </div>
 </template>
 
 <script>
@@ -12,50 +15,41 @@ export default {
   setup() {
     // primitive
     const count = ref(0)
+    const a = ref(0)
+    const b = ref(0)
+    const history = ref([])
 
-    // object
-    const numbers = reactive({
-      a: 0,
-      b: 0
+    watch([a, b], ([newA, newB], [oldA, oldB]) => {
+      if (newA !== oldA) {
+        history.value.push(`a: ${oldA} -> ${newA}`)
+      }
+
+      if (newB !== oldB) {
+        history.value.push(`b: ${oldB} -> ${newB}`)
+      }
     })
-
-    const increase = (num) => {
-      numbers[num]++
-    }
 
     const increment = () => {
       count.value++
     }
 
     const total = computed(() => {
-      return count.value + numbers.a + numbers.b
+      return count.value + a.value + b.value
     })
 
     const double = computed(() => {
       return total.value * 2
     })
 
-    // watch(double, (newVal, oldVal) => {
-    //   console.log(`${oldVal} -> ${newVal}`)
-    // }, {
-    //   immediate: true
-    // })
-
-
-    // posts/1
-    watchEffect(() => {
-      fetch(/api/posts/postId)
-      // console.log(`numbers: ${numbers.a}`)
-    })
-
     return {
       total,
       double,
+      history,
       msg: 'world',
       count,
+      a,
+      b,
       increment,
-      numbers,
-      increase
     }
   }
 }
