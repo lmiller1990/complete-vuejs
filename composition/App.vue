@@ -35,16 +35,18 @@ export default {
       return total.value * 2
     })
 
-    watch(double, (newVal, oldVal) => {
-      console.log(`${oldVal} -> ${newVal}`)
-    }, {
-      immediate: true
-    })
-
-
-    // watchEffect(() => {
-    //   console.log(`numbers: ${numbers.a}`)
+    // watch(double, (newVal, oldVal) => {
+    //   console.log(`${oldVal} -> ${newVal}`)
+    // }, {
+    //   immediate: true
     // })
+
+
+    // posts/1
+    watchEffect(() => {
+      fetch(/api/posts/postId)
+      // console.log(`numbers: ${numbers.a}`)
+    })
 
     return {
       total,
