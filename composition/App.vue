@@ -12,7 +12,9 @@ import { useNumbers } from './useNumbers.js'
 
 export default {
   setup() {
-    const { a, b, history, double } = useNumbers()
+    const {
+       a, b, history, double 
+    } = useNumbers()
 
     return {
       a, b, history, double
