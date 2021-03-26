@@ -1,5 +1,4 @@
 <template>
-  <button @click="increment">{{ count }}</button>
   <button @click="a++">{{ a }}</button>
   <button @click="b++">{{ b }}</button>
   <h1>{{ double }}</h1>
@@ -9,47 +8,14 @@
 </template>
 
 <script>
-import { ref, reactive, computed, watch, watchEffect } from 'vue'
+import { useNumbers } from './useNumbers.js'
 
 export default {
   setup() {
-    // primitive
-    const count = ref(0)
-    const a = ref(0)
-    const b = ref(0)
-    const history = ref([])
-
-    watch([a, b], ([newA, newB], [oldA, oldB]) => {
-      if (newA !== oldA) {
-        history.value.push(`a: ${oldA} -> ${newA}`)
-      }
-
-      if (newB !== oldB) {
-        history.value.push(`b: ${oldB} -> ${newB}`)
-      }
-    })
-
-    const increment = () => {
-      count.value++
-    }
-
-    const total = computed(() => {
-      return count.value + a.value + b.value
-    })
-
-    const double = computed(() => {
-      return total.value * 2
-    })
+    const { a, b, history, double } = useNumbers()
 
     return {
-      total,
-      double,
-      history,
-      msg: 'world',
-      count,
-      a,
-      b,
-      increment,
+      a, b, history, double
     }
   }
 }
