@@ -1,6 +1,6 @@
 <template>
   <card
-    v-for="post in store.state.posts"
+    v-for="post in filteredPosts"
     :key="post.id"
   >
     <template v-slot:title>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { store } from './store.js'
 import Card from '../pokemon/Card.vue'
 import Controls from './Controls.vue'
@@ -41,7 +41,18 @@ export default {
       currentTag.value = tag
     }
 
+    const filteredPosts = computed(() => {
+      if (!currentTag.value) {
+        return store.state.posts
+      }
+
+      return store.state.posts.filter(post => 
+        post.hashtags.includes(currentTag.value)
+      )
+    })
+
     return {
+      filteredPosts,
       store,
       setHashtag,
       currentTag
