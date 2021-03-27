@@ -12,12 +12,17 @@
     </template>
 
     <template v-slot:description>
-      <controls :post="post" />
+      <controls 
+        :post="post" 
+        @setHashtag="setHashtag"
+      />
     </template>
   </card>
+  {{ currentTag }}
 </template>
 
 <script>
+import { ref } from 'vue'
 import { store } from './store.js'
 import Card from '../pokemon/Card.vue'
 import Controls from './Controls.vue'
@@ -29,8 +34,17 @@ export default {
   },
 
   setup() {
+    // string
+    const currentTag = ref()
+
+    const setHashtag = (tag) => {
+      currentTag.value = tag
+    }
+
     return {
-      store
+      store,
+      setHashtag,
+      currentTag
     }
   }
 }
