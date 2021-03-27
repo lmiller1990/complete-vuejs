@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { testPosts } from './testPosts.js'
 
 class Store {
@@ -11,6 +11,16 @@ class Store {
 
   setHashtag(tag) {
     this.state.currentTag = tag
+  }
+
+  get posts() {
+    if (!store.state.currentTag) {
+      return store.state.posts
+    }
+
+    return store.state.posts.filter(post => 
+      post.hashtags.includes(store.state.currentTag)
+    )
   }
 
   likePost(post) {
