@@ -6,8 +6,14 @@ class Store {
       posts: [
         {
           id: 1,
-          title: 'New Post',
-          content: 'This is the post content'
+          title: 'Learning Vue.js',
+          content: 'Using the Composition API',
+          likes: 10,
+          hashtags: [
+            'vue',
+            'javascript',
+            'composition API',
+          ]
         }
       ]
     })
