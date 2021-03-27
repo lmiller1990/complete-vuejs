@@ -1,21 +1,10 @@
 import { reactive } from 'vue'
+import { testPosts } from './testPosts.js'
 
 class Store {
   constructor() {
     this.state = reactive({
-      posts: [
-        {
-          id: 1,
-          title: 'Learning Vue.js',
-          content: 'Using the Composition API',
-          likes: 10,
-          hashtags: [
-            'vue',
-            'javascript',
-            'composition API',
-          ]
-        }
-      ]
+      posts: testPosts
     })
   }
 }
