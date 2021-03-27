@@ -4,7 +4,6 @@
     v-for="hashtag in post.hashtags"
     :key="hashtag"
     :hashtag="hashtag"
-    @setHashtag="setHashtag"
   />
 </template>
 
@@ -12,7 +11,6 @@
 import Hashtag from './Hashtag.vue'
 
 export default {
-  emits: ['setHashtag'],
   components: {
     Hashtag
   },
@@ -24,16 +22,6 @@ export default {
       // likes
       // hashtags
       type: Object
-    }
-  },
-
-  setup(props, ctx) {
-    const setHashtag = (hashtag) => {
-      ctx.emit('setHashtag', hashtag)
-    }
-
-    return {
-      setHashtag
     }
   }
 }

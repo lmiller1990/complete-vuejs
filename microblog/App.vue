@@ -14,15 +14,15 @@
     <template v-slot:description>
       <controls 
         :post="post" 
-        @setHashtag="setHashtag"
       />
     </template>
   </card>
-  {{ currentTag }}
 </template>
 
+hashtag -> app
+
 <script>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { store } from './store.js'
 import Card from '../pokemon/Card.vue'
 import Controls from './Controls.vue'
@@ -34,28 +34,19 @@ export default {
   },
 
   setup() {
-    // string
-    const currentTag = ref()
-
-    const setHashtag = (tag) => {
-      currentTag.value = tag
-    }
-
     const filteredPosts = computed(() => {
-      if (!currentTag.value) {
+      if (!store.state.currentTag) {
         return store.state.posts
       }
 
       return store.state.posts.filter(post => 
-        post.hashtags.includes(currentTag.value)
+        post.hashtags.includes(store.state.currentTag)
       )
     })
 
     return {
       filteredPosts,
       store,
-      setHashtag,
-      currentTag
     }
   }
 }
