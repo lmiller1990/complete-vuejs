@@ -50,7 +50,9 @@ Fundamentals #4: Vuex
 Project #4: Capstone Project: Photo Album
 
 - combining everything
+- slots
+- design patterns
 - vue/vuex/vue-router
-- composition API, options API source availabe!
+- composition API, options API source available!
 
 

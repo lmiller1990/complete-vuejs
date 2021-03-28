@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template v-slot:header>
-      Header
+      Photo App
     </template>
 
     <template v-slot:sidebar>
