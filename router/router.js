@@ -4,6 +4,7 @@ import {
 } from 'vue-router'
 import Hello from './Hello.vue'
 import Posts from './Posts.vue'
+import Post from './Post.vue'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -16,7 +17,14 @@ export const router = createRouter({
     {
       name: 'posts',
       component: Posts,
-      path: '/posts'
+      path: '/posts',
+      children: [
+        {
+          name: 'post',
+          component: Post,
+          path: ':id'
+        },
+      ]
     }
   ]
 })

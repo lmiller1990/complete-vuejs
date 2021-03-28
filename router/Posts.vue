@@ -1,5 +1,7 @@
 <template>
-  Posts
+  <h1>Posts</h1>
+  <hr />
+  <router-view />
 </template>
 
 <script>
