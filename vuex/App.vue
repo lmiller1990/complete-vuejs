@@ -7,11 +7,11 @@
     {{ post.title }}
   </button>
 
-  <div v-if="store.state.post">
+  <div v-if="store.state.posts.post">
     <h1>
-      {{ store.getters.postTitle }}
+      {{ store.getters['posts/postTitle'] }}
     </h1>
-    <p>{{ store.state.post.content }}</p>
+    <p>{{ store.state.posts.post.content }}</p>
   </div>
 </template>
 
@@ -33,10 +33,7 @@ export default {
 
     const store = useStore()
     const fetchPost = (post) => {
-      // mutation -> commit
-      // store.commit('setPostId', post.id)
-      // action -> dispatch
-      store.dispatch('fetchPostData', post.id)
+      store.dispatch('posts/fetchPostData', post.id)
     }
 
     return {
