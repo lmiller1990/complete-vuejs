@@ -3,6 +3,7 @@ import {
   createWebHistory
 } from 'vue-router'
 import Hello from './Hello.vue'
+import Posts from './Posts.vue'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -11,6 +12,11 @@ export const router = createRouter({
       name: 'Hello',
       component: Hello,
       path: '/hello'
+    },
+    {
+      name: 'posts',
+      component: Posts,
+      path: '/posts'
     }
   ]
 })
