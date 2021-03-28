@@ -76,5 +76,8 @@ body {
 form {
   max-width: 400px;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

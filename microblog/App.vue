@@ -1,27 +1,33 @@
 <template>
-  <input 
-    :value="currentTag" 
-    @input="handleInput"
-  />
-  <div class="cards">
-    <card
-      v-for="post in filteredPosts"
-      :key="post.id"
-    >
-      <template v-slot:title>
-        {{ post.title }}
-      </template>
+  <div id="wrapper">
+    <div>
+      <label>Search hashtag:</label>
+      <input 
+        :value="currentTag" 
+        @input="handleInput"
+        placeholder="#vue"
+      />
+    </div>
+    <div class="cards">
+      <card
+        v-for="post in filteredPosts"
+        :key="post.id"
+      >
+        <template v-slot:title>
+          {{ post.title }}
+        </template>
 
-      <template v-slot:content>
-        {{ post.content }}
-      </template>
+        <template v-slot:content>
+          {{ post.content }}
+        </template>
 
-      <template v-slot:description>
-        <controls 
-          :post="post" 
-        />
-      </template>
-    </card>
+        <template v-slot:description>
+          <controls 
+            :post="post" 
+          />
+        </template>
+      </card>
+    </div>
   </div>
 </template>
 
@@ -59,12 +65,22 @@ export default {
   justify-content: center;
 }
 
+input, label {
+  font-size: 30px;
+}
+
 input {
   height: 30px;
   width: 200px;
-  font-size: 30px;
   padding: 5px;
   margin: 5px;
-  margin-left: 65px;
+  margin: 30px;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

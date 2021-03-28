@@ -32,6 +32,8 @@ button {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
 }
 
 button:disabled {

@@ -51,7 +51,7 @@ Project #4: Capstone Project: Photo Album
 
 - combining everything
 - slots
-- design patterns
+- desien patterns
 - vue/vuex/vue-router
 - composition API, options API source available!
 
