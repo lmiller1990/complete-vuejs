@@ -7,15 +7,16 @@
     {{ post.title }}
   </button>
 
-  <div v-if="store.state.posts.post">
+  <div v-if="post">
     <h1>
-      {{ store.getters['posts/postTitle'] }}
+      {{ postTitle }}
     </h1>
-    <p>{{ store.state.posts.post.content }}</p>
+    <p>{{ post.content }}</p>
   </div>
 </template>
 
 <script>
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
@@ -36,8 +37,17 @@ export default {
       store.dispatch('posts/fetchPostData', post.id)
     }
 
+    const post = computed(() => {
+      return store.state.posts.post
+    })
+
+    const postTitle = computed(() => {
+      return store.getters['posts/postTitle']
+    })
+
     return {
-      store,
+      postTitle,
+      post,
       fetchPost,
       posts,
     }
