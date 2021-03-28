@@ -7,7 +7,7 @@
     {{ post.title }}
   </button>
 
-  {{ store.state.postId }}
+  {{ store.state.post }}
 </template>
 
 <script>
@@ -17,11 +17,11 @@ export default {
   setup() {
     const posts = [
       { 
-        id: '1',
+        id: 1,
         title: 'Post 1',
       },
       { 
-        id: '2',
+        id: 2,
         title: 'Post 2',
       },
     ]
