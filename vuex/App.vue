@@ -2,7 +2,7 @@
   <button 
     v-for="post in posts" 
     :key="post.id"
-    @click="setPost(post)"
+    @click="fetchPost(post)"
   >
     {{ post.title }}
   </button>
@@ -27,13 +27,16 @@ export default {
     ]
 
     const store = useStore()
-    const setPost = (post) => {
-      store.commit('setPostId', post.id)
+    const fetchPost = (post) => {
+      // mutation -> commit
+      // store.commit('setPostId', post.id)
+      // action -> dispatch
+      store.dispatch('fetchPostData', post.id)
     }
 
     return {
       store,
-      setPost,
+      fetchPost,
       posts,
     }
   }
