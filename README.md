@@ -1,3 +1,20 @@
+## Initial Installation
+
+```sh
+yarn add vue@3.0.7
+yarn add vite@2.1.1 @vitejs/plugin-vue@1.1.5 --dev
+```
+
+File: `vite.config.js`:
+
+```js
+import vue from '@vitejs/plugin-vue'
+
+export default {
+  plugins: [vue()]
+}
+```
+
 Fundamentals #1: Options API
 
 Project #1: Form Validation
