@@ -1,7 +1,7 @@
 <template>
   <layout>
     <template v-slot:header>
-      Photo App
+      Capstone Project - Photo App
     </template>
 
     <template v-slot:sidebar>

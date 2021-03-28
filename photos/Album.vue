@@ -31,8 +31,8 @@ a {
   background: darkcyan;
   color: white;
   border: none;
-  margin: 5px;
   padding: 10px;
+  margin: 0 10px 5px 0;
   font-size: 18px;
   border-radius: 5px;
   transition: .1s;
