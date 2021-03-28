@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import { useStore } from 'vuex'
-
 export default {
   props: {
     album: {
@@ -19,15 +17,9 @@ export default {
   },
 
   setup(props) {
-    const store = useStore()
     const albumLink = `/albums/${props.album.id}`
 
-    const fetchPhotos = () => {
-      store.dispatch('photos/fetchPhotosForAlbum', { album: props.album })
-    }
-
     return {
-      fetchPhotos,
       albumLink
     }
   }
