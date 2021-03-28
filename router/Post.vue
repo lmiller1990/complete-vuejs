@@ -11,20 +11,25 @@ import { useRoute } from 'vue-router'
 import { testPosts } from '../microblog/testPosts.js'
 
 export default {
-  setup() {
-    const route = useRoute()
-    console.log(route)
-    console.log(route.params)
-
-    const post = computed(() => 
-      testPosts.find(x => {
-        return x.id === parseInt(route.params.id, 10)
+  computed: {
+    post() {
+      return testPosts.find(x => {
+        return x.id === parseInt(this.$route.params.id, 10)
       })
-    )
-
-    return {
-      post
     }
   }
+  // setup() {
+  //   const route = useRoute()
+
+  //   const post = computed(() => 
+  //     testPosts.find(x => {
+  //       return x.id === parseInt(route.params.id, 10)
+  //     })
+  //   )
+
+  //   return {
+  //     post
+  //   }
+  // }
 }
 </script>
