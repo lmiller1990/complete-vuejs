@@ -3,6 +3,7 @@ import {
   createRouter
 } from 'vue-router'
 import PhotoApp from './PhotoApp.vue'
+import PhotoView from './PhotoView.vue'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -10,7 +11,14 @@ export const router = createRouter({
     {
       name: 'root',
       component: PhotoApp,
-      path: '/'
+      path: '/',
+      children: [
+        {
+          name: 'photos',
+          component: PhotoView,
+          path: 'albums/:id'
+        }
+      ]
     }
   ]
 })

@@ -13,11 +13,7 @@
     </template>
 
     <template v-slot:content>
-      <img 
-        v-for="photo in photosForCurrentAlbum" 
-        :key="photo.thumbnailUrl" 
-        :src="photo.thumbnailUrl"
-      />
+      <router-view />
     </template>
   </layout>
 </template>
@@ -40,17 +36,12 @@ export default {
       return store.state.albums.all
     })
 
-    const photosForCurrentAlbum = computed(() => {
-      return store.state.photos.photosForCurrentAlbum
-    })
-
     onBeforeMount(() => {
       store.dispatch('albums/fetch')
     })
 
     return {
       albums,
-      photosForCurrentAlbum
     }
   }
 }
