@@ -61,5 +61,14 @@ body {
 button {
   height: 50px;
   width: 200px;
+  margin-right: 10px;
+  border-radius: 5px;
+  background: none;
+  border: none;
+  border: 1px solid;
+}
+
+button:hover {
+  background: lightyellow;
 }
 </style>

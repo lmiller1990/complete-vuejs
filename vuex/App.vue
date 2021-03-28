@@ -63,5 +63,6 @@ body {
 button {
   height: 50px;
   width: 200px;
+  margin: 15px;
 }
 </style>
