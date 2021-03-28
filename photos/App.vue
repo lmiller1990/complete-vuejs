@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount, computed } from 'vue'
 import { useStore } from 'vuex'
 import Layout from './Layout.vue'
 
@@ -27,12 +27,13 @@ export default {
   },
 
   setup() {
-    const albums = ref([])
+    const store = useStore()
+    const albums = computed(() => {
+      return store.state.albums.all
+    })
 
-    onBeforeMount(async () => {
-      const response = await window.fetch('https://jsonplaceholder.typicode.com/albums')
-      const json = await response.json()
-      albums.value = json
+    onBeforeMount(() => {
+      store.dispatch('albums/fetch')
     })
 
     return {
