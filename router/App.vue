@@ -1,13 +1,11 @@
 <template>
   App
-  <router-link to="/hello">
-    Hello
+
+  <br />
+  <router-link to="/posts">
+    See All Posts
   </router-link>
 
-  <router-link to="/posts">
-    Posts
-  </router-link>
-  
   <hr />
 
   <router-view />
@@ -18,5 +16,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+body {
+  font-family: Arial;
+  font-size: 1.5rem;
+}
 </style>

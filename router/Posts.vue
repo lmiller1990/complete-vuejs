@@ -1,5 +1,5 @@
 <template>
-  <h1>Posts</h1>
+  <h2>Posts</h2>
   <ul>
     <li v-for="post in testPosts" :key="post.id">
       <router-link :to="`/posts/${post.id}`">

@@ -1,6 +1,6 @@
 <template>
   <div v-if="post">
-    <h4>{{ post.title }}</h4>
+    <h3>{{ post.title }}</h3>
     <p>{{ post.content }}</p>
   </div>
 </template>
