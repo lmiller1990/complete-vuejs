@@ -5,9 +5,11 @@
     </template>
 
     <template v-slot:sidebar>
-      <div v-for="album in albums" :key="album.id">
-        {{ album.title }}
-      </div>
+      <album 
+        v-for="album in albums" 
+        :key="album.id"
+        :album="album"
+      />
     </template>
 
     <template v-slot:content>
@@ -20,10 +22,12 @@
 import { onBeforeMount, computed } from 'vue'
 import { useStore } from 'vuex'
 import Layout from './Layout.vue'
+import Album from './Album.vue'
 
 export default {
   components: {
     Layout,
+    Album
   },
 
   setup() {
@@ -42,6 +46,7 @@ export default {
   }
 }
 </script>
+
 
 <style>
 * {
