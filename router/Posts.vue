@@ -12,12 +12,14 @@
 </template>
 
 <script>
-import { testPosts } from '../microblog/testPosts.js'
+import { usePosts } from './usePosts.js'
 
 export default {
   setup() {
+    const posts = usePosts()
+
     return {
-      testPosts
+      testPosts: posts.posts
     }
   }
 }

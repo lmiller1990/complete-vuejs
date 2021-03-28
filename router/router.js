@@ -5,6 +5,7 @@ import {
 import Hello from './Hello.vue'
 import Posts from './Posts.vue'
 import Post from './Post.vue'
+import NewPost from './NewPost.vue'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -19,6 +20,11 @@ export const router = createRouter({
       component: Posts,
       path: '/posts',
       children: [
+        {
+          name: 'NewPost',
+          component: NewPost,
+          path: 'new'
+        },
         {
           name: 'post',
           component: Post,
