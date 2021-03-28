@@ -24,5 +24,14 @@ export const store = createStore({
       const post = testPosts.find(x => x.id === id)
       ctx.commit('setPostData', post)
     }
+  },
+
+  getters: {
+    postTitle(state) {
+      if (!state.post) {
+        return ''
+      }
+      return `#${state.post.id} ${state.post.title}`
+    }
   }
 })

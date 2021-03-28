@@ -7,7 +7,12 @@
     {{ post.title }}
   </button>
 
-  {{ store.state.post }}
+  <div v-if="store.state.post">
+    <h1>
+      {{ store.getters.postTitle }}
+    </h1>
+    <p>{{ store.state.post.content }}</p>
+  </div>
 </template>
 
 <script>
