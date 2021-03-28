@@ -5,5 +5,11 @@ export const store = createStore({
     return {
       count: 0
     }
+  },
+
+  mutations: {
+    increment(state, number) {
+      state.count += number
+    }
   }
 })
