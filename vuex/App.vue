@@ -1,6 +1,13 @@
 <template>
-  <div>{{ store.state.count }}</div>
-  <button @click="inc">Inc</button>
+  <button 
+    v-for="post in posts" 
+    :key="post.id"
+    @click="setPost(post)"
+  >
+    {{ post.title }}
+  </button>
+
+  {{ store.state.postId }}
 </template>
 
 <script>
@@ -8,14 +15,26 @@ import { useStore } from 'vuex'
 
 export default {
   setup() {
+    const posts = [
+      { 
+        id: '1',
+        title: 'Post 1',
+      },
+      { 
+        id: '2',
+        title: 'Post 2',
+      },
+    ]
+
     const store = useStore()
-    const inc = () => {
-      store.commit('increment', 2)
+    const setPost = (post) => {
+      store.commit('setPostId', post.id)
     }
 
     return {
       store,
-      inc
+      setPost,
+      posts,
     }
   }
 }
