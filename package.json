@@ -5,7 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "@vue/compiler-sfc": "3.0.7",
-    "vue": "^3.0.7"
+    "vue": "^3.0.7",
+    "vue-router": "4.0.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "1.1.5",
