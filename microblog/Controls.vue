@@ -1,6 +1,6 @@
 <template>
   <div>{{ post.likes }}</div>
-  <button @click="handleLike">Like</button>
+  <button @click="handleLike">❤️ Like</button>
   <hr />
   <hashtag
     v-for="hashtag in post.hashtags"

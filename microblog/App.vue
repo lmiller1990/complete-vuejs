@@ -3,24 +3,26 @@
     :value="currentTag" 
     @input="handleInput"
   />
-  <card
-    v-for="post in filteredPosts"
-    :key="post.id"
-  >
-    <template v-slot:title>
-      {{ post.title }}
-    </template>
+  <div class="cards">
+    <card
+      v-for="post in filteredPosts"
+      :key="post.id"
+    >
+      <template v-slot:title>
+        {{ post.title }}
+      </template>
 
-    <template v-slot:content>
-      {{ post.content }}
-    </template>
+      <template v-slot:content>
+        {{ post.content }}
+      </template>
 
-    <template v-slot:description>
-      <controls 
-        :post="post" 
-      />
-    </template>
-  </card>
+      <template v-slot:description>
+        <controls 
+          :post="post" 
+        />
+      </template>
+    </card>
+  </div>
 </template>
 
 hashtag -> app
@@ -52,4 +54,17 @@ export default {
 </script>
 
 <style scoped>
+.cards {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  height: 30px;
+  width: 200px;
+  font-size: 30px;
+  padding: 5px;
+  margin: 5px;
+  margin-left: 65px;
+}
 </style>
