@@ -8,18 +8,28 @@
     </li>
   </ul>
   <hr />
-  <router-view />
+  <router-view @newPost="newPost" />
 </template>
 
 <script>
-import { usePosts } from './usePosts.js'
+import { testPosts } from '../microblog/testPosts.js'
 
 export default {
-  setup() {
-    const posts = usePosts()
-
+  data() {
     return {
-      testPosts: posts.posts
+      testPosts
+    }
+  },
+
+  methods: {
+    newPost(post) {
+      const id = this.testPosts.length + 1
+      const newPost = {
+        ...post,
+        id
+      }
+      this.testPosts.push(newPost)
+      this.$router.push(`/posts/${id}`)
     }
   }
 }
