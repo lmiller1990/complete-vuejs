@@ -7,10 +7,6 @@
   <router-link to="/posts">
     Posts
   </router-link>
-
-  <router-link to="/asdf">
-    Asdf
-  </router-link>
   
   <hr />
 
