@@ -1,5 +1,9 @@
 <template>
-  <button @click="fetchPhotos">{{ album.title }}</button>
+  <router-link 
+    :to="albumLink"
+  >
+    {{ album.title }}
+  </router-link>
 </template>
 
 <script>
@@ -9,26 +13,29 @@ export default {
   props: {
     album: {
       // ...
-      type: Object
+      type: Object,
+      required: true
     }
   },
 
   setup(props) {
     const store = useStore()
+    const albumLink = `/albums/${props.album.id}`
 
     const fetchPhotos = () => {
       store.dispatch('photos/fetchPhotosForAlbum', { album: props.album })
     }
 
     return {
-      fetchPhotos
+      fetchPhotos,
+      albumLink
     }
   }
 }
 </script>
 
 <style scoped>
-button {
+a {
   background: darkcyan;
   color: white;
   border: none;
@@ -43,7 +50,8 @@ button {
   text-decoration: none;
   font-family: Arial;
 }
-button:hover {
+
+a:hover {
   filter: brightness(120%);
   cursor: pointer;
   transition: .1s;
