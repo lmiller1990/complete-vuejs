@@ -1,6 +1,9 @@
 <template>
   <form @submit.prevent="submit">
+    <input placeholder="Title" />
+    <br />
     <textarea v-model="content" rows="5" />
+      <br />
     <button>Create</button>
   </form>
 </template>
@@ -13,6 +16,7 @@ import { useRouter } from 'vue-router'
 export default {
   data() {
     return {
+      title: '',
       content: ''
     }
   },
@@ -28,3 +32,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+input, textarea {
+  font-size: 40px;
+  width: 400px;
+}
+</style>

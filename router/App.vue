@@ -1,9 +1,11 @@
 <template>
-  App
-
-  <br />
   <router-link to="/posts">
     See All Posts
+  </router-link>
+  <br />
+
+  <router-link to="/posts/new">
+    New Post
   </router-link>
 
   <hr />
