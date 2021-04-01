@@ -1,7 +1,8 @@
 <template>
-  <button @click="a++">{{ a }}</button>
-  <button @click="b++">{{ b }}</button>
-  <h1>{{ double }}</h1>
+  A: <button @click="a++">{{ a }}</button>
+  B: <button @click="b++">{{ b }}</button>
+  <h1>A + B * 2 = {{ double }}</h1>
+  <h1>History</h1>
   <div v-for="val in history" :key="val">
     {{ val }}
   </div>
@@ -23,9 +24,12 @@ export default {
 }
 </script>
 
-<style scoped>
-button {
+<style>
+* {
   font-size: 40px;
+}
+
+button {
   margin: 5px;
 }
 </style>
