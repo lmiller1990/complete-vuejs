@@ -1,3 +1,14 @@
+## Installation
+
+```
+yarn add vue@3.0.7
+yarn add vite@2.1.1 --dev
+```
+
+- node.js v12.18.3
+- yarn 1.22.10
+
+
 Fundamentals #1: Options API
 
 Project #1: Form Validation
