@@ -1,27 +1,29 @@
 <template>
-  <form @submit.prevent="submit">
-    <my-input 
-      name="Username" 
-      :rules="{ required: true, min: 5 }"
-      :value="username.value"
-      type="text"
-      @update="update"
-    />
+  <div id="wrapper">
+    <form @submit.prevent="submit">
+      <my-input 
+        name="Username" 
+        :rules="{ required: true, min: 5 }"
+        :value="username.value"
+        type="text"
+        @update="update"
+      />
 
-    <my-input 
-      name="Password" 
-      :rules="{ required: true, min: 10 }"
-      :value="password.value"
-      type="password"
-      @update="update"
-    />
+      <my-input 
+        name="Password" 
+        :rules="{ required: true, min: 10 }"
+        :value="password.value"
+        type="password"
+        @update="update"
+      />
 
-    <my-button 
-      color="white"
-      background="darkslateblue"
-      :disabled="!valid"
-    />
-  </form>
+      <my-button 
+        color="white"
+        background="darkslateblue"
+        :disabled="!valid"
+      />
+    </form>
+  </div>
 </template>
 
 <script>
@@ -69,6 +71,12 @@ export default {
 </script>
 
 <style>
+#wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}
+
 body {
   font-family: Arial;
 }
