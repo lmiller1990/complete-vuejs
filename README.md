@@ -1,6 +1,13 @@
 # Complete Vue.js 3 (Inc Options + Composition API, Vue Router and Vuex)
 
+![Image](https://img-a.udemycdn.com/course/750x422/3463716_36a0_4.jpg?hA2G48zHXcUOr-mlM_l9pY3ds0T54Idl4HuR6-MPLqY_70LaUZf1GD7XGzsNRt_aKYvjzn340Wc_ScRUrgm5KGPm7IgVQ8qllU3OW1umGe8DUS9UjEl68ImjwalAXwwx)
+
 Hi! Welcome to my course on Vue.js 3. Let's have a great time learning Vue.js 3 🎉.
+
+There are two branches
+
+- `master` is the completed source code
+- `getting-started` is the minimal template to follow along from start
 
 ## Installation
 
