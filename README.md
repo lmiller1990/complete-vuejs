@@ -4,6 +4,8 @@
 
 Hi! Welcome to my course on Vue.js 3. Let's have a great time learning Vue.js 3 🎉.
 
+[Learn more here](https://vuejs-course.com/complete-vuejs), or buy it on [Gumroad](https://gumroad.com/l/complete-vuejs) or [Udemy](https://www.udemy.com/course/complete-vuejs-3-crash-course-composition-api-vue-router-vuex/?referralCode=765A6E679914BF6E60AF).
+
 There are two branches
 
 - `master` is the completed source code
