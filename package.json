@@ -2,7 +2,12 @@
   "name": "complete-vuejs-3",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
+  "license": "MIT",  
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
   "dependencies": {
     "@vue/compiler-sfc": "3.0.7",
     "vue": "^3.0.7",
