@@ -1,0 +1,29 @@
+{
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.vue",
+        "test/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "files": [
+        "ts-custom.d.ts"
+    ],
+    "types": [
+        "jest"
+    ],
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "target": "es5",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": true,
+        "noImplicitReturns": true,
+        "allowJs": false,
+        "sourceMap": true,
+        "pretty": true,
+        "removeComments": true
+    }
+}
